@@ -81,18 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Closing photo carousel ----------
-     Simple crossfade carousel, no dependencies. Auto-advances
-     every 5s, pauses on hover, and builds its own dot nav. */
-  const carousel = document.getElementById('carousel');
-  if (carousel) {
-    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
-    const dotsWrap = document.getElementById('carouselDots');
+  /* ---------- Photo carousels ----------
+     Simple crossfade carousel, no dependencies. Auto-advances,
+     pauses on hover, and builds its own dot nav. Used for both the
+     top banner and the closing photo strip. */
+  function initCarousel(container, dotsWrap, intervalMs) {
+    if (!container) return;
+    const slides = Array.from(container.querySelectorAll('.carousel-slide'));
+    if (!slides.length) return;
+
     let current = Math.max(0, slides.findIndex((s) => s.classList.contains('is-active')));
     if (current === -1) current = 0;
     let timer = null;
 
-    // Build dots to match the number of slides
     if (dotsWrap && slides.length > 1) {
       slides.forEach((_, i) => {
         const dot = document.createElement('button');
@@ -115,15 +116,29 @@ document.addEventListener('DOMContentLoaded', () => {
     function next() { goTo(current + 1); }
 
     function start() {
-      if (slides.length > 1) timer = setInterval(next, 5000);
+      if (slides.length > 1) timer = setInterval(next, intervalMs);
     }
     function stop() {
       if (timer) clearInterval(timer);
     }
 
     start();
-    carousel.addEventListener('mouseenter', stop);
-    carousel.addEventListener('mouseleave', start);
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
   }
+
+  // Top banner: a touch faster, since it's the very first thing visitors see
+  initCarousel(
+    document.querySelector('[data-carousel="top"]'),
+    document.getElementById('topCarouselDots'),
+    4500
+  );
+
+  // Closing photo strip, just before the footer
+  initCarousel(
+    document.getElementById('carousel'),
+    document.getElementById('carouselDots'),
+    5000
+  );
 
 });
