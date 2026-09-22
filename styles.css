@@ -222,16 +222,22 @@ p { color: var(--text-soft); }
 
 .hero-photo { aspect-ratio: 4 / 5; }
 
-/* ---------- Top banner — the first thing you see ---------- */
-.banner-photo {
+/* ---------- Top banner — rotating photos, the first thing you see ---------- */
+.top-carousel {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 7;
-  border-radius: 0;
-  border: none;
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
+  background: var(--bg-alt);
 }
 @media (max-width: 720px) {
-  .banner-photo { aspect-ratio: 4 / 5; }
+  .top-carousel { aspect-ratio: 4 / 5; }
+}
+
+.banner-photo {
+  border-radius: 0;
+  border: none;
 }
 
 /* ---------- Sections ---------- */
@@ -343,6 +349,30 @@ p { color: var(--text-soft); }
 .carousel-dots button.is-active {
   background: var(--accent);
   transform: scale(1.25);
+}
+
+/* Overlay variant: dots sitting on top of the rotating photo, so they
+   need their own contrast rather than relying on the page background */
+.carousel-dots-overlay {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  margin-top: 0;
+  padding: 8px 12px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(52, 49, 44, 0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.carousel-dots-overlay button {
+  background: rgba(255, 255, 255, 0.55);
+}
+.carousel-dots-overlay button.is-active {
+  background: var(--white);
 }
 
 .signature {
