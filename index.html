@@ -20,15 +20,17 @@
   <nav class="nav wrap">
     <a href="#top" class="logo">
       <svg class="logo-mark" viewBox="0 0 40 40" role="img" aria-label="Bibi Rosa logo">
-        <g transform="rotate(0 20 20)"><polygon points="20,2 15,20 25,20" fill="#C97C5D"/></g>
-        <g transform="rotate(45 20 20)"><polygon points="20,2 15,20 25,20" fill="#E3B23C"/></g>
-        <g transform="rotate(90 20 20)"><polygon points="20,2 15,20 25,20" fill="#D98C97"/></g>
-        <g transform="rotate(135 20 20)"><polygon points="20,2 15,20 25,20" fill="#93A67E"/></g>
-        <g transform="rotate(180 20 20)"><polygon points="20,2 15,20 25,20" fill="#C97C5D"/></g>
-        <g transform="rotate(225 20 20)"><polygon points="20,2 15,20 25,20" fill="#E3B23C"/></g>
-        <g transform="rotate(270 20 20)"><polygon points="20,2 15,20 25,20" fill="#D98C97"/></g>
-        <g transform="rotate(315 20 20)"><polygon points="20,2 15,20 25,20" fill="#93A67E"/></g>
-        <circle cx="20" cy="20" r="5" fill="#FBF3E7" stroke="#34312C" stroke-width="1"/>
+        <circle cx="20" cy="20" r="18.5" fill="none" stroke="#34312C" stroke-width="0.6" opacity="0.25"/>
+        <path d="M20,20 C17,14 17,6 20,3 C23,6 23,14 20,20 Z" fill="#C97C5D" transform="rotate(0 20 20)"/>
+        <path d="M20,20 C17,14 17,6 20,3 C23,6 23,14 20,20 Z" fill="#93A67E" transform="rotate(90 20 20)"/>
+        <path d="M20,20 C17,14 17,6 20,3 C23,6 23,14 20,20 Z" fill="#C97C5D" transform="rotate(180 20 20)"/>
+        <path d="M20,20 C17,14 17,6 20,3 C23,6 23,14 20,20 Z" fill="#93A67E" transform="rotate(270 20 20)"/>
+        <path d="M20,20 C18.4,16.5 18.4,11.5 20,8.5 C21.6,11.5 21.6,16.5 20,20 Z" fill="#E3B23C" transform="rotate(45 20 20)"/>
+        <path d="M20,20 C18.4,16.5 18.4,11.5 20,8.5 C21.6,11.5 21.6,16.5 20,20 Z" fill="#D98C97" transform="rotate(135 20 20)"/>
+        <path d="M20,20 C18.4,16.5 18.4,11.5 20,8.5 C21.6,11.5 21.6,16.5 20,20 Z" fill="#E3B23C" transform="rotate(225 20 20)"/>
+        <path d="M20,20 C18.4,16.5 18.4,11.5 20,8.5 C21.6,11.5 21.6,16.5 20,20 Z" fill="#D98C97" transform="rotate(315 20 20)"/>
+        <circle cx="20" cy="20" r="6" fill="#FBF3E7" stroke="#34312C" stroke-width="0.75"/>
+        <circle cx="20" cy="20" r="2" fill="#C97C5D"/>
       </svg>
       <span>Bibi Rosa</span>
     </a>
@@ -47,10 +49,22 @@
   </nav>
 </header>
 
-<!-- ============ TOP BANNER — first thing you see ============ -->
-<figure id="top" class="photo banner-photo" data-fallback="A wide photo of Bibi Rosa — save an image as images/banner.jpg">
-  <img src="images/banner.jpg" alt="Bibi Rosa in quiet meditation practice">
-</figure>
+<!-- ============ TOP BANNER — rotating photos, first thing you see ============ -->
+<div id="top" class="top-carousel" data-carousel="top">
+  <figure class="photo banner-photo carousel-slide is-active" data-fallback="Bibi Rosa in quiet meditation practice — save as images/banner-1.jpg">
+    <img src="images/banner-1.jpg" alt="Bibi Rosa in quiet meditation practice">
+  </figure>
+  <figure class="photo banner-photo carousel-slide" data-fallback="Bibi Rosa teaching a session — save as images/banner-2.jpg">
+    <img src="images/banner-2.jpg" alt="Bibi Rosa teaching a meditation session">
+  </figure>
+  <figure class="photo banner-photo carousel-slide" data-fallback="Bibi Rosa at an international retreat — save as images/banner-3.jpg">
+    <img src="images/banner-3.jpg" alt="Bibi Rosa at an international retreat">
+  </figure>
+  <figure class="photo banner-photo carousel-slide" data-fallback="Bibi Rosa at Bumi Festival — save as images/banner-4.jpg">
+    <img src="images/banner-4.jpg" alt="Bibi Rosa leading a session at Bumi Festival">
+  </figure>
+  <div class="carousel-dots carousel-dots-overlay" id="topCarouselDots"></div>
+</div>
 
 <main>
 
